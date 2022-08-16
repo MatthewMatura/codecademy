@@ -1,0 +1,45 @@
+#had issue with last if/else statement.  When running, it would not allow Drone Shipping to be chose.  It would've been chosen at low weights.
+
+weight = 2
+ground_shipping_fee = 20.00
+ground_prem_cost = 125.00
+
+#ground shipping
+if weight <= 2.00:
+  ground_ship_cost = round(weight * 1.5 + 20,2)
+elif weight <= 6.00:
+  ground_ship_cost = round(weight * 3 + 20,2)
+elif weight <= 10.00:
+  ground_ship_cost = round(weight * 4 + 20,2)
+elif weight > 10.00:
+  ground_ship_cost = round(weight * 4 + 20,2)
+else:
+  print(error)
+
+print("Ground Shipping Cost: " + str(ground_ship_cost))
+
+print("Ground Premium Shipping Cost: " + str(ground_prem_cost))
+
+
+#drone shipping
+if weight <= 2.00:
+  drone_ship_cost = round(weight * 4.5,2)
+elif weight <= 6.00:
+  drone_ship_cost = round(weight * 9,2)
+elif weight <= 10.00:
+  drone_ship_cost = round(weight * 12,2)
+elif weight > 10.00:
+  drone_ship_cost = round(weight * 14.25,2)
+else:
+  print(error)
+
+print("Drone Shipping Cost: " + str(drone_ship_cost))
+
+if ground_ship_cost < ground_prem_cost and drone_ship_cost:
+  print("Based on the weight of your package, Basic Ground Shipping is the least expensive option at $" + str(ground_ship_cost))
+elif ground_prem_cost < ground_ship_cost and drone_ship_cost:
+  print("Based on the weight of your package, Premium Ground Shipping is the least expensive option at $" + str(ground_prem_cost))
+elif drone_ship_cost < ground_ship_cost and ground_prem_cost:
+  print("Based on the weight of your package, Drone Shipping is the least expensive option at $" + str(drone_ship_cost))
+else:
+  print("There was an error with your submission.  Please try again.")
